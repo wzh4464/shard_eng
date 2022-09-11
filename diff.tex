@@ -1,0 +1,243 @@
+% @Author: WU Zihan
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL Theoretical Analysis of Sharding_ori.tex   Sun Sep 11 17:19:12 2022
+%DIF ADD Theoretical Analysis of Sharding.tex       Sun Sep 11 17:36:36 2022
+% @Date:   2022-09-11 17:15:57
+% @Last Modified by:   WU Zihan
+%DIF 4c4
+%DIF < % @Last Modified time: 2022-09-11 17:46:26
+%DIF -------
+% @Last Modified time: 2022-09-11 17:34:53
+ %DIF > 
+%DIF -------
+\documentclass[10pt, conference, letterpaper]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+%\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{subfigure}
+ 
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proof}{Proof} 
+
+
+
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+\section{Theoretical Analysis}
+There are $k$ committees,  and $\mu$ is the maximum transaction processing rate of each committee.
+
+We assume $\lambda$ is the maximum effective throughput. 
+On average, there are  $n$ accounts per transaction. \DIFdelbegin \DIFdel{$\alpha_{n,m}$ }\DIFdelend \DIFaddbegin \DIFadd{$\alpha_{m}$ }\DIFaddend is the probability that a transaction with $n$ accounts involves $m$ shards. 
+
+The overall transaction processing rate of the system \DIFdelbegin \DIFdel{is:
+}\DIFdelend \DIFaddbegin \DIFadd{should satisfy:
+}\DIFaddend \begin{equation} \label{equ1}
+	\DIFdelbegin \DIFdel{k\mu=}\DIFdelend \lambda \sum_{m=1}^n m \alpha\DIFdelbegin \DIFdel{_{n,m}}\DIFdelend \DIFaddbegin \DIFadd{_{m} }\le \DIFadd{k\mu}\DIFaddend . 	
+\end{equation}
+
+
+Let $ \chi_i$ be the random variable where
+\begin{equation}
+	\chi_i=
+	\begin{cases} 
+		1, & \mbox{if the transaction involves  shard $i$}          \\
+		0, & \mbox{if the transaction does not involve   shard $i$}
+	\end{cases}
+\end{equation}
+The probability that any account is assigned to shard $i$ is $\frac{1}{k}$. Correspondingly, the probability that an account is not assigned to $i$ is $1-\frac{1}{k}$. 
+
+Thus, the probability that a transaction does not involve shard $i$ is:
+\begin{equation}
+	\DIFdelbegin \DIFdel{P}\DIFdelend \DIFaddbegin \operatorname{P}\DIFaddend ( \chi_i=0)=\left(1-\frac{1}{k}\right)^n=\left(\frac{k-1}{k}\right)^n.
+\end{equation}
+Correspondingly, the probability that a transaction involves shard $i$ is:
+\begin{equation}
+	\DIFdelbegin \DIFdel{P}\DIFdelend \DIFaddbegin \operatorname{P}\DIFaddend ( \chi_i=1)=\DIFdelbegin \DIFdel{1-P}\DIFdelend \DIFaddbegin \DIFadd{1-}\operatorname{P}\DIFaddend ( \chi_i=0)=1-\left(\frac{k-1}{k}\right)^n.
+\end{equation}
+The expectation is
+\begin{equation}
+	\DIFdelbegin %DIFDELCMD < \begin{split}
+%DIFDELCMD < 		E( \chi_i )&= 0\cdot P( \chi_i=0)+1 \cdot P( \chi_i=1)\\
+%DIFDELCMD < 		&=1-\left(\frac{k-1}{k}\right)^n.
+%DIFDELCMD < 	\end{split}%%%
+\DIFdelend \DIFaddbegin \begin{split}
+		\operatorname{E}( \chi_i )&= 0\cdot \operatorname{P}( \chi_i=0)+1 \cdot \operatorname{P}( \chi_i=1)\\
+		&=1-\left(\frac{k-1}{k}\right)^n.
+	\end{split}\DIFaddend 
+\end{equation}
+
+Let \DIFdelbegin \DIFdel{$\xi_n$ }\DIFdelend \DIFaddbegin \DIFadd{$\xi$ }\DIFaddend denote the number of shards processing  a transaction with $n$ accounts.		
+\begin{equation}
+	\xi\DIFdelbegin \DIFdel{_n}\DIFdelend = \chi_1+ \chi_2+\dots+ \chi_k
+\end{equation}
+According to the linearity of expectation,  
+\begin{equation}
+	\DIFdelbegin %DIFDELCMD < \begin{split}
+%DIFDELCMD < 		E(\xi_n)&=E( \chi_1)+E( \chi_2)+\dots+E( \chi_k)  \\
+%DIFDELCMD < 		&= k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]
+%DIFDELCMD < 	\end{split}%%%
+\DIFdelend \DIFaddbegin \begin{split}
+		\operatorname{E}(\xi)&=\operatorname{E}( \chi_1)+\operatorname{E}( \chi_2)+\dots+\operatorname{E}( \chi_k)  \\
+		&= k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]
+	\end{split}\DIFaddend 
+\end{equation}
+According to the definition of expectation,
+\begin{equation}
+	\DIFdelbegin \DIFdel{E}\DIFdelend \DIFaddbegin \operatorname{E}\DIFaddend (\xi\DIFdelbegin \DIFdel{_n}\DIFdelend )=\sum_{m=1}^n  \DIFdelbegin \DIFdel{\alpha_{n,m}}\DIFdelend m\DIFaddbegin \DIFadd{\alpha_{m}}\DIFaddend .
+\end{equation}
+Thus, 
+\begin{equation}
+	\DIFdelbegin \DIFdel{E(\xi_n)= }\DIFdelend k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]=\sum_{m=1}^n  \DIFdelbegin \DIFdel{\alpha_{n,m}}\DIFdelend m\DIFaddbegin \DIFadd{\alpha_{m} = }\operatorname{E}\DIFadd{(\xi) }\DIFaddend \\
+\end{equation}
+
+Combined with 	\DIFdelbegin \DIFdel{Eq}\DIFdelend \DIFaddbegin \DIFadd{Ineq}\DIFaddend .(\ref{equ1}), we can get 
+\begin{equation} \label{equ10}
+	\DIFdelbegin %DIFDELCMD < \begin{split}
+%DIFDELCMD < 		\lambda&=\frac{k\mu}{\sum_{m=1}^n  \alpha_{n,m}m } = \frac{k\mu}{k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]}\\
+%DIFDELCMD < 		&=\frac{\mu}{1-\left(\frac{k-1}{k}\right)^n}\\
+%DIFDELCMD < 		&=\frac{\mu k^n}{k^n-(k-1)^n}
+%DIFDELCMD < 	\end{split}%%%
+\DIFdelend \DIFaddbegin \begin{split}
+		\lambda&\le\frac{k\mu}{\sum_{m=1}^n  \alpha_{n,m}m } = \frac{k\mu}{k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]}\\
+		&=\frac{\mu}{1-\left(\frac{k-1}{k}\right)^n}\\
+		&=\frac{\mu k^n}{k^n-(k-1)^n}
+	\end{split}\DIFaddend 
+\end{equation}
+%DIF >  \begin{equation}  
+%DIF >  	\frac{	\partial \lambda}{	\partial k}
+%DIF >  	=\frac{\mu n k^{n-1} (k-1)^{n-1} }{\left[k^n-(k-1)^n\right]^2}
+%DIF >  	>0
+%DIF >  \end{equation}
+\DIFaddbegin \DIFadd{Or
+}\DIFaddend \begin{equation} \DIFdelbegin \DIFdel{\frac{	\partial \lambda}{	\partial k}
+	=\frac{\mu n k^{n-1} (k-1)^{n-1} }{\left[k^n-(k-1)^n\right]^2}
+	>0
+}\DIFdelend \DIFaddbegin \label{equ11}
+	\DIFadd{\frac{n\lambda}{\mu k} }\le \DIFadd{\frac{n k^{n-1}}{k^n-(k-1)^n}.
+}\DIFaddend \end{equation}
+\DIFdelbegin \DIFdel{Eq.(\ref{equ10})
+can be transformed into:
+}\DIFdelend %DIF >  Eq.(\ref{equ10}) can be transformed into:
+%DIF >  \begin{equation}
+%DIF >  	\frac{\mu k}{n \lambda}=  \frac{k^n-(k-1)^n}{n k^{n-1}}
+%DIF >  \end{equation}
+\DIFaddbegin \DIFadd{Consider the right side of Ineq.(\ref{equ11})
+}\DIFaddend \begin{equation} \DIFdelbegin \DIFdel{\frac{\mu k}{n \lambda}=  \frac{k^n-(k-1)^n}{n k^{n-1}}
+}\DIFdelend \DIFaddbegin \label{equ12}
+	\begin{split}
+		&\quad \lim_{k\rightarrow \infty} \frac{n k^{n-1}}{k^n-(k-1)^n} \\
+		&=\lim_{k\rightarrow \infty}  \frac{n k^{n-1}}{k^n-k^n+n k^{n-1}+o(k^{n-1})} \\
+		&= 1
+	\end{split}
+\DIFaddend \end{equation}
+
+\DIFdelbegin \begin{displaymath} \DIFdel{%DIFDELCMD < \label{equ12}%%%
+	\begin{split}
+		\lim_{k\rightarrow \infty} \frac{\mu k}{n \lambda}&=  \lim_{k\rightarrow \infty} \frac{k^n-(k-1)^n}{n k^{n-1}} \\
+		&=\lim_{k\rightarrow \infty}  \frac{k^n-k^n+n k^{n-1}+o(k^{n-1})}{n k^{n-1}} \\
+		&= 1
+	\end{split}
+}\end{displaymath}%DIFAUXCMD
+%DIFDELCMD < 
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend 
+
+Therefore, as $ k \rightarrow \infty$, we can have \DIFdelbegin \DIFdel{$\lambda \sim \frac{\mu }{n}k $}\DIFdelend \DIFaddbegin \DIFadd{$\lambda \lesssim \cfrac{\mu}{n}\,k $}\DIFaddend .
+
+
+
+\end{document}

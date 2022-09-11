@@ -1,0 +1,119 @@
+% @Author: WU Zihan
+% @Date:   2022-09-11 17:15:57
+% @Last Modified by:   WU Zihan
+% @Last Modified time: 2022-09-11 17:18:52
+\documentclass[10pt, conference, letterpaper]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+%\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{subfigure}
+ 
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proof}{Proof} 
+
+
+
+\begin{document}
+
+\section{Theoretical Analysis}
+There are $k$ committees,  and $\mu$ is the maximum transaction processing rate of each committee.
+
+We assume $\lambda$ is the maximum effective throughput. 
+On average, there are  $n$ accounts per transaction. $\alpha_{n,m}$ is the probability that a transaction with $n$ accounts involves $m$ shards. 
+
+The overall transaction processing rate of the system is:
+\begin{equation} \label{equ1}
+	k\mu=\lambda \sum_{m=1}^n m \alpha_{n,m}. 	
+\end{equation}
+
+
+Let $ \chi_i$ be the random variable where
+\begin{equation}
+	\chi_i=
+	\begin{cases} 
+		1, & \mbox{if the transaction involves  shard $i$}          \\
+		0, & \mbox{if the transaction does not involve   shard $i$}
+	\end{cases}
+\end{equation}
+The probability that any account is assigned to shard $i$ is $\frac{1}{k}$. Correspondingly, the probability that an account is not assigned to $i$ is $1-\frac{1}{k}$. 
+
+Thus, the probability that a transaction does not involve shard $i$ is:
+\begin{equation}
+	P( \chi_i=0)=\left(1-\frac{1}{k}\right)^n=\left(\frac{k-1}{k}\right)^n.
+\end{equation}
+Correspondingly, the probability that a transaction involves shard $i$ is:
+\begin{equation}
+	P( \chi_i=1)=1-P( \chi_i=0)=1-\left(\frac{k-1}{k}\right)^n.
+\end{equation}
+The expectation is
+\begin{equation}
+	\begin{split}
+		E( \chi_i )&= 0\cdot P( \chi_i=0)+1 \cdot P( \chi_i=1)\\
+		&=1-\left(\frac{k-1}{k}\right)^n.
+	\end{split}
+\end{equation}
+
+Let $\xi_n$ denote the number of shards processing  a transaction with $n$ accounts.		
+\begin{equation}
+	\xi_n= \chi_1+ \chi_2+\dots+ \chi_k
+\end{equation}
+According to the linearity of expectation,  
+\begin{equation}
+	\begin{split}
+		E(\xi_n)&=E( \chi_1)+E( \chi_2)+\dots+E( \chi_k)  \\
+		&= k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]
+	\end{split}
+\end{equation}
+According to the definition of expectation,
+\begin{equation}
+	E(\xi_n)=\sum_{m=1}^n  \alpha_{n,m}m.
+\end{equation}
+Thus, 
+\begin{equation}
+	E(\xi_n)= k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]=\sum_{m=1}^n  \alpha_{n,m}m  \\
+\end{equation}
+
+Combined with 	Eq.(\ref{equ1}), we can get 
+\begin{equation} \label{equ10}
+	\begin{split}
+		\lambda&=\frac{k\mu}{\sum_{m=1}^n  \alpha_{n,m}m } = \frac{k\mu}{k\cdot \left[1-\left(\frac{k-1}{k}\right)^n\right]}\\
+		&=\frac{\mu}{1-\left(\frac{k-1}{k}\right)^n}\\
+		&=\frac{\mu k^n}{k^n-(k-1)^n}
+	\end{split}
+\end{equation}
+\begin{equation}  
+	\frac{	\partial \lambda}{	\partial k}
+	=\frac{\mu n k^{n-1} (k-1)^{n-1} }{\left[k^n-(k-1)^n\right]^2}
+	>0
+\end{equation}
+Eq.(\ref{equ10}) can be transformed into:
+\begin{equation}
+	\frac{\mu k}{n \lambda}=  \frac{k^n-(k-1)^n}{n k^{n-1}}
+\end{equation}
+
+\begin{equation} \label{equ12}
+	\begin{split}
+		\lim_{k\rightarrow \infty} \frac{\mu k}{n \lambda}&=  \lim_{k\rightarrow \infty} \frac{k^n-(k-1)^n}{n k^{n-1}} \\
+		&=\lim_{k\rightarrow \infty}  \frac{k^n-k^n+n k^{n-1}+o(k^{n-1})}{n k^{n-1}} \\
+		&= 1
+	\end{split}
+\end{equation}
+
+Therefore, as $ k \rightarrow \infty$, we can have $\lambda \sim \frac{\mu }{n}k $.
+
+
+
+\end{document}
